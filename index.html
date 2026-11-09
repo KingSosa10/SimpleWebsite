@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DA News | Definitely Accurate News</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      background-color: #111;
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #c41e3a;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 22px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ff526c;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(
+        135deg, #21050c, #730d27, #111
+      );
+      color: white;
+      text-align: center;
+      padding: 110px 20px;
+    }
+
+    .news-badge {
+      display: inline-block;
+      background: #c41e3a;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #ff526c;
+    }
+
+    .hero h2 {
+      font-size: 25px;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #ddd;
+      font-size: 17px;
+    }
+
+    /* Buttons */
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 8px;
+      background-color: #c41e3a;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #96142b;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #111;
+    }
+
+    /* General Sections */
+    section {
+      padding: 75px 10%;
+    }
+
+    .section-title {
+      font-size: 34px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    /* About */
+    .about {
+      background-color: white;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+    }
+
+    /* Services */
+    .services {
+      background-color: #f5f5f5;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit, minmax(230px, 1fr)
+      );
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #850f2d;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    /* Technology Section */
+    .technology {
+      background: #171717;
+      color: white;
+      text-align: center;
+    }
+
+    .technology p {
+      max-width: 750px;
+      margin: auto;
+      color: #ddd;
+    }
+
+    .tech-tags {
+      margin-top: 30px;
+    }
+
+    .tech-tags span {
+      display: inline-block;
+      background: #343434;
+      padding: 10px 18px;
+      border-radius: 25px;
+      margin: 6px;
+      font-size: 14px;
+    }
+
+    /* Review */
+    .review {
+      background: white;
+      text-align: center;
+    }
+
+    .quote {
+      max-width: 650px;
+      margin: auto;
+      padding: 35px;
+      background: #f9f0f2;
+      border-left: 5px solid #850f2d;
+      border-radius: 10px;
+    }
+
+    .quote p {
+      font-size: 19px;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .quote strong {
+      color: #850f2d;
+    }
+
+    /* Call to Action */
+    .cta {
+      background: #850f2d;
+      color: white;
+      text-align: center;
+    }
+
+    .cta p {
+      margin: 15px auto;
+      max-width: 600px;
+    }
+
+    .cta .btn {
+      background: white;
+      color: #850f2d;
+    }
+
+    .cta .btn:hover {
+      background: #eee;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="logo">DA <span>NEWS</span></div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Our Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="news-badge">
+      THE STUDENT VOICE OF UOFS C
+    </div>
+
+    <h1>DA <span>NEWS</span></h1>
+
+    <h2>Definitely Accurate. Definitely Informed.</h2>
+
+    <p>
+      Your campus. Your stories. Your news.
+      Bringing University of South Carolina students
+      reliable updates, exciting stories, and
+      the latest happenings around campus.
+    </p>
+
+    <div class="buttons">
+      <a href="services.html" class="btn">
+        Explore Our Services
+      </a>
+
+      <a href="contact.html" class="btn btn-outline">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <!-- Elevator Pitch -->
+  <section class="about">
+    <h2 class="section-title">What Is DA News?</h2>
+
+    <p>
+      DA News, short for Definitely Accurate News,
+      is a student-operated broadcasting network
+      dedicated to keeping University of South
+      Carolina students informed and entertained.
+      We deliver campus news, student interviews,
+      sports updates, and breaking stories through
+      a modern digital platform. Our mission is
+      to make campus information accessible,
+      engaging, and trustworthy.
+    </p>
+  </section>
+
+  <!-- Featured Services -->
+  <section class="services">
+    <h2 class="section-title">What We Offer</h2>
+
+    <p class="section-subtitle">
+      Everything you need to stay connected
+      with life at the University of South Carolina.
+    </p>
+
+    <div class="card-container">
+
+      <div class="card">
+        <div class="card-icon">📺</div>
+        <h3>Campus Broadcasting</h3>
+        <p>
+          Student-focused news broadcasts covering
+          campus events, announcements, and
+          important university updates.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎤</div>
+        <h3>Student Interviews</h3>
+        <p>
+          Interviews, discussions, and student
+          perspectives that highlight the voices
+          of the Gamecock community.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏈</div>
+        <h3>Sports & Events</h3>
+        <p>
+          Coverage of Gamecock athletics,
+          student organizations, and exciting
+          events happening around campus.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Verified News</h3>
+        <p>
+          Our digital news system uses AI-assisted
+          screening and human review to help
+          prevent misinformation before stories
+          are published.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Computing / IT Highlight -->
+  <section class="technology">
+    <h2 class="section-title">
+      Powered by Technology
+    </h2>
+
+    <p>
+      Behind every DA News broadcast is a digital
+      information system. Our IT team manages
+      website development, database organization,
+      cybersecurity, and an AI-assisted content
+      verification process. Technology helps us
+      deliver accurate information while protecting
+      our broadcasting platform.
+    </p>
+
+    <div class="tech-tags">
+      <span>Web Development</span>
+      <span>Cybersecurity</span>
+      <span>Database Management</span>
+      <span>AI News Screening</span>
+      <span>Digital Broadcasting</span>
+    </div>
+  </section>
+
+  <!-- Fun Review -->
+  <section class="review">
+    <h2 class="section-title">
+      What Students Are Saying
+    </h2>
+
+    <p class="section-subtitle">
+      A fictional review from our campus community.
+    </p>
+
+    <div class="quote">
+      <p>
+        "Finally, a news network that actually
+        understands college students! DA News
+        keeps me updated without making the
+        news boring."
+      </p>
+
+      <strong>
+        ★★★★★ — Alex, UofSC Student
+      </strong>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2 class="section-title">
+      Stay Informed. Stay Connected.
+    </h2>
+
+    <p>
+      Join the DA News community and discover
+      what's happening around campus.
+    </p>
+
+    <a href="services.html" class="btn">
+      Explore DA News
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <strong>DA NEWS</strong>
+      | Definitely Accurate News
+    </p>
+
+    <p>
+      Made for the University of South Carolina
+      student community.
+    </p>
+
+    <p>
+      &copy; 2026 DA News.
+      Fictional Student Business Project.
+    </p>
+  </footer>
+
+</body>
+</html>
